@@ -5,6 +5,7 @@ const treble = document.getElementById("treble");
 const visualizer = document.getElementById("visualizer");
 
 const context = new AudioContext();
+const analizerNode = new AnalyserNode(context, { fftSize: 256 });
 
 const setupContext = async () => {
   const audio = await getAudio();
@@ -12,7 +13,9 @@ const setupContext = async () => {
     await context.resume();
   }
   const source = context.createMediaStreamSource(audio);
-  source.connect(context.destination);
+  source
+  .connect(analizerNode)
+  .connect(context.destination);
 };
 
 const getAudio = async () => {
@@ -28,8 +31,9 @@ const getAudio = async () => {
 
 const drawVisualizer = () => {
   requestAnimationFrame(drawVisualizer);
-
-  
+  const bufferLength = analizerNode.frequencyBinCount
+  const dataArray = new Uint8Array(bufferLength)
+  analizerNode.getByteFrequencyData(dataArray)
 };
 
 setupContext();
