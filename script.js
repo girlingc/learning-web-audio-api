@@ -6,16 +6,17 @@ const visualizer = document.getElementById("visualizer");
 
 const context = new AudioContext();
 
-setupContext()
-
 const setupContext = async () => {
-  const audio = await getAudio()
-  const source = context.createMediaStreamSource(audio)
-  source.connect(context.destination)
-}
+  const audio = await getAudio();
+  if (context.state === "suspended") {
+    await context.resume();
+  }
+  const source = context.createMediaStreamSource(audio);
+  source.connect(context.destination);
+};
 
 const getAudio = async () => {
-  return navigator.getUserMedia({
+  return navigator.mediaDevices.getUserMedia({
     audio: {
       echoCancellation: false,
       autoGainControl: false,
@@ -23,4 +24,12 @@ const getAudio = async () => {
       latency: 0,
     },
   });
-}
+};
+
+const drawVisualizer = () => {
+  requestAnimationFrame(drawVisualizer);
+
+  
+};
+
+setupContext();
