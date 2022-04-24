@@ -6,9 +6,15 @@ const visualizer = document.getElementById("visualizer");
 
 const context = new AudioContext();
 
-function setupContext() {}
+setupContext()
 
-function getAudio() {
+const setupContext = async () => {
+  const audio = await getAudio()
+  const source = context.createMediaStreamSource(audio)
+  source.connect(context.destination)
+}
+
+const getAudio = async () => {
   return navigator.getUserMedia({
     audio: {
       echoCancellation: false,
