@@ -42,7 +42,7 @@ const init = () => {
     let drawVisual;
     let drawNoteVisual;
 
-    const draw =  () => {
+    const draw = () => {
       drawVisual = requestAnimationFrame(draw);
       analyser.fftSize = 2048;
       const bufferLength = analyser.fftSize;
@@ -100,7 +100,7 @@ const init = () => {
     const noteFromPitch = (frequency) => {
       const noteNum = 12 * (Math.log(frequency / 440) / Math.log(2));
       return Math.round(noteNum) + 69;
-    }
+    };
 
     const drawNote = () => {
       drawNoteVisual = requestAnimationFrame(drawNote);
@@ -152,7 +152,7 @@ const init = () => {
         } else {
           return valueToDisplay === previousValueToDisplay;
         }
-      }
+      };
       // Check if this value has been within the given range for n iterations
       if (noteIsSimilarEnough()) {
         if (smoothingCount < smoothingCountThreshold) {
@@ -219,8 +219,8 @@ const init = () => {
       drawFrequency();
     }
     drawNote();
-  }
-}
+  };
+};
 
 // Must be called on analyser.getFloatTimeDomainData and audioContext.sampleRate
 // From https://github.com/cwilso/PitchDetect/pull/23
@@ -305,4 +305,4 @@ const autoCorrelate = (buffer, sampleRate) => {
   }
 
   return sampleRate / T0;
-}
+};
