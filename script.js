@@ -2,32 +2,41 @@
 
 const init = () => {
   let source;
+  // Set up new Audio Context
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
   const analyser = audioContext.createAnalyser();
+
+  // Set min and max decibels to pick up
   analyser.minDecibels = -100;
   analyser.maxDecibels = -10;
   analyser.smoothingTimeConstant = 0.85;
+
+  // Check if audio is allowed
   if (!navigator?.mediaDevices?.getUserMedia) {
-    // No audio allowed
     alert("Sorry, getUserMedia is required for the app.");
     return;
   } else {
+    // Set up getUserMedia
     const constraints = { audio: true };
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then((stream) => {
         // Initialize the SourceNode
         source = audioContext.createMediaStreamSource(stream);
+
         // Connect the source node to the analyzer
         source.connect(analyser);
+
+        // Draw Frequency or Sine Wave on screen
         visualize();
       })
+      // Throw error if microphone is blocked from app
       .catch((err) => {
         alert("Sorry, microphone permissions are required for the app.");
       });
   }
 
-  // Visualizing, copied from voice change o matic
+  // Visualizing, copied from voice change o matic (Web Audio API_ https://github.com/mdn/voice-change-o-matic)
   const canvas = document.querySelector(".visualizer");
   const canvasContext = canvas.getContext("2d");
   let WIDTH;
