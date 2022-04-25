@@ -1,4 +1,16 @@
 // Example from https://alexanderell.is/posts/tuner/tuner.js
+/*
+************************************************************************************************************
+
+References:
+https://thesoundofnumbers.com/wp-content/uploads/2014/11/pitch_intervals_freq.pdf
+https://alexanderell.is/posts/tuner/tuner.js
+https://github.com/mdn/voice-change-o-matic
+https://github.com/cwilso/PitchDetect/blob/master/js/pitchdetect.js
+https://github.com/cwilso/PitchDetect/pull/23
+
+************************************************************************************************************
+*/
 
 const init = () => {
   let source;
@@ -43,12 +55,15 @@ const init = () => {
   let HEIGHT;
 
   const visualize = () => {
+    // Set width and height for the frequency / Sine Wave visualizer
     WIDTH = canvas.width;
     HEIGHT = canvas.height;
 
+    // Initiate drawVisual and drawNoteVisual
     let drawVisual;
     let drawNoteVisual;
 
+    // Function to draw lines on the visualizer
     const draw = () => {
       drawVisual = requestAnimationFrame(draw);
       analyser.fftSize = 2048;
@@ -89,7 +104,7 @@ const init = () => {
     let smoothingThreshold = 5;
     let smoothingCountThreshold = 5;
 
-    // Thanks to PitchDetect: https://github.com/cwilso/PitchDetect/blob/master/js/pitchdetect.js
+    // Thanks to PitchDetect: https://github.com/cwilso/PitchDetect/blob/master/js/pitchdetect.js (lines 207 - 213)
     const noteStrings = [
       "C",
       "C#",
