@@ -60,44 +60,7 @@ const init = () => {
     HEIGHT = canvas.height;
 
     // Initiate drawVisual and drawNoteVisual
-    let drawVisual;
     let drawNoteVisual;
-
-    // Function to draw lines on the visualizer
-    const draw = () => {
-      drawVisual = requestAnimationFrame(draw);
-      analyser.fftSize = 2048;
-      const bufferLength = analyser.fftSize;
-      const dataArray = new Uint8Array(bufferLength);
-      analyser.getByteTimeDomainData(dataArray);
-
-      canvasContext.fillStyle = "rgb(200, 200, 200)";
-      canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
-
-      canvasContext.lineWidth = 2;
-      canvasContext.strokeStyle = "rgb(0, 0, 0)";
-
-      canvasContext.beginPath();
-
-      let sliceWidth = (WIDTH * 1.0) / bufferLength;
-      let x = 0;
-
-      for (let i = 0; i < bufferLength; i++) {
-        const v = dataArray[i] / 128.0;
-        const y = (v * HEIGHT) / 2;
-
-        if (i === 0) {
-          canvasContext.moveTo(x, y);
-        } else {
-          canvasContext.lineTo(x, y);
-        }
-
-        x += sliceWidth;
-      }
-
-      canvasContext.lineTo(canvas.width, canvas.height / 2);
-      canvasContext.stroke();
-    };
 
     let previousValueToDisplay = 0;
     let smoothingCount = 0;
