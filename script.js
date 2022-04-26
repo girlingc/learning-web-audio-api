@@ -231,15 +231,7 @@ const init = () => {
 
       drawAlt();
     };
-
-    const displayValue = document.querySelector(
-      'input[name="display"]:checked'
-    ).value;
-    if (displayValue == "sine") {
-      draw();
-    } else {
-      drawFrequency();
-    }
+    drawFrequency();
     drawNote();
   };
 };
