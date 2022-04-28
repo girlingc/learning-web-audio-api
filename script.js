@@ -140,8 +140,6 @@ const closestNoteAndFreqDiff = (freq) => {
   return `${smallestDifference.toFixed(2)} Hz, ${actualClosestNote}`;
 };
 
-
-
 const init = () => {
   let source;
   // Set up new Audio Context
