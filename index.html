@@ -9,28 +9,45 @@
   </head>
   <body>
     <canvas class="visualizer" width="640" height="100"></canvas>
-    <br>
+    <br />
     <button id="init" onClick="init()">Start</button>
-    
+
     <h1 id="note">Press start to begin</h1>
-    
+
     <legend>Rounding options:</legend>
     <div>
-      <input type="radio" id="roundingNone" name="rounding" value="none" checked>
+      <input
+        type="radio"
+        id="roundingNone"
+        name="rounding"
+        value="none"
+        checked
+      />
       <label for="roundingNone">No rounding</label>
     </div>
-    <br>
-    
+    <br />
+
     <legend>Smoothing options:</legend>
     <div>
-      <input type="radio" id="smoothingNone" name="smoothing" value="none">
+      <input
+        type="radio"
+        id="smoothingNone"
+        name="smoothing"
+        value="none"
+        checked
+      />
       <label for="smoothingNone">No smoothing</label>
-      <br>
-      <input type="radio" id="smoothingMedium" name="smoothing" value="basic" checked>
-      <label for="smoothingMedium">Basic smoothing</label>
-      <br>
-      <input type="radio" id="smoothingHard" name="smoothing" value="very">
-      <label for="smoothingHard">Very smoothed (note must be more consistent and held for longer)</label>
+      <br />
+      <input type="radio" id="smoothingMedium" name="smoothing" value="basic" />
+      <label for="smoothingMedium"
+        >Smoothed (note must be more consistent and held for longer)</label
+      >
+      <br />
+      <input type="radio" id="smoothingHard" name="smoothing" value="very" />
+      <label for="smoothingHard"
+        >Very smoothed (note must be even more consistent and held for even
+        longer)</label
+      >
     </div>
   </body>
 </html>
