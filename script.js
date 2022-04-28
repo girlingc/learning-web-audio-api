@@ -226,19 +226,6 @@ const init = () => {
 
       // Handle rounding
       let valueToDisplay = autoCorrelateValue;
-      const roundingValue = document.querySelector(
-        'input[name="rounding"]:checked'
-      ).value;
-      if (roundingValue == "none") {
-        // Do nothing
-      } else if (roundingValue == "hz") {
-        valueToDisplay = Math.round(valueToDisplay);
-      } else {
-        // Get the closest note
-        // Thanks to PitchDetect:
-        valueToDisplay = noteStrings[noteFromPitch(autoCorrelateValue) % 12];
-      }
-
       const smoothingValue = document.querySelector(
         'input[name="smoothing"]:checked'
       ).value;
