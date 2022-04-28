@@ -204,7 +204,6 @@ const init = () => {
       analyser.getFloatTimeDomainData(buffer);
       const autoCorrelateValue = autoCorrelate(buffer, audioContext.sampleRate);
 
-      // Handle rounding
       let valueToDisplay = autoCorrelateValue;
       const smoothingValue = document.querySelector(
         'input[name="smoothing"]:checked'
@@ -250,7 +249,7 @@ const init = () => {
         return;
       }
       if (typeof valueToDisplay == "number") {
-        valueToDisplay += " Hz";
+        valueToDisplay = closestNoteAndFreqDiff(valueToDisplay);
       }
 
       document.getElementById("note").innerText = valueToDisplay;
