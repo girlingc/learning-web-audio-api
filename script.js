@@ -123,6 +123,23 @@ const notesFrequency = [
   { note: "B8", frequency: 7902.13 },
 ];
 
+const closestNoteAndFreqDiff = (freq) => {
+  let smallestDifference = Infinity;
+  let actualClosestNote = "";
+  for (let note of notesFrequency) {
+    if (Math.abs(note.frequency) - Math.abs(freq) < smallestDifference) {
+      if (Math.abs(note.frequency) - Math.abs(freq) < 0) {
+        smallestDifference = Math.abs(note.frequency) - Math.abs(freq) * -1;
+        actualClosestNote = note.note;
+      } else {
+        smallestDifference = Math.abs(note.frequency) - Math.abs(freq);
+        actualClosestNote = note.note;
+      }
+    }
+  }
+  return smallestDifference, actualClosestNote;
+};
+
 
 
 const init = () => {
