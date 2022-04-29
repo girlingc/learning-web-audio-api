@@ -137,7 +137,7 @@ const closestNoteAndFreqDiff = (freq) => {
       }
     }
   }
-  return `${smallestDifference.toFixed(2)} Hz, ${actualClosestNote}`;
+  return `${freq.toFixed(2)} Hz, ${actualClosestNote}`;
 };
 
 const init = () => {
