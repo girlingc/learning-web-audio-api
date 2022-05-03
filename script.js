@@ -66,7 +66,7 @@ const notesFrequency = [
   { note: "D4", frequency: 293.66 },
   { note: "D4#", frequency: 311.13 },
   { note: "E4", frequency: 329.63 },
-  { note: "F4", frequency: 249.23 },
+  { note: "F4", frequency: 349.23 },
   { note: "F4#", frequency: 369.99 },
   { note: "G4", frequency: 392.0 },
   { note: "G4#", frequency: 415.3 },
