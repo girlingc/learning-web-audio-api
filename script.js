@@ -139,19 +139,10 @@ const closestNote = (freq) => {
   }
   return actualClosestNote;
 };
-const frequency = (freq) => {
-  let smallestDifference = Infinity;
-  for (let note of notesFrequency) {
-    if (Math.abs(note.frequency) - Math.abs(freq) < smallestDifference) {
-      if (Math.abs(note.frequency) - Math.abs(freq) < 0) {
-        smallestDifference = Math.abs(note.frequency) - Math.abs(freq) * -1;
-      } else {
-        smallestDifference = Math.abs(note.frequency) - Math.abs(freq);
-      }
-    }
-  }
-  return `${freq.toFixed(2)} Hz`;
-}
+
+// const percentToCorrectNote = (freq) = {
+//   let smallestDifference
+// }
 
 const init = () => {
   let source;
@@ -260,7 +251,7 @@ const init = () => {
         return;
       }
       if (typeof valueToDisplay == "number") {
-        valueToDisplay = `${closestNote(valueToDisplay)}\n${frequency(valueToDisplay)}`;
+        valueToDisplay = `${closestNote(valueToDisplay)}\n${valueToDisplay.toFixed(2)}\n`;
       }
 
       document.getElementById("note").innerText = valueToDisplay;
