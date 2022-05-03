@@ -128,10 +128,8 @@ const closestNote = (freq) => {
   for (let note of notesFrequency) {
     if (Math.abs(note.frequency) - Math.abs(freq) < smallestDifference) {
       if (Math.abs(note.frequency) - Math.abs(freq) < 0) {
-        smallestDifference = Math.abs(note.frequency) - Math.abs(freq) * -1;
         actualClosestNote = note.note;
       } else {
-        smallestDifference = Math.abs(note.frequency) - Math.abs(freq);
         actualClosestNote = note.note;
       }
     }
