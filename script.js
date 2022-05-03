@@ -140,9 +140,22 @@ const closestNote = (freq) => {
   return actualClosestNote;
 };
 
-// const percentToCorrectNote = (freq) = {
-//   let smallestDifference
-// }
+const percentToClosestNote = (freq) => {
+  let frequencyInput = Infinity;
+  let percent = 0;
+  for (let note of notesFrequency) {
+    if (Math.abs(note.frequency) - Math.abs(freq) < frequencyInput) {
+      if (Math.abs(note.frequency) - Math.abs(freq) < 0) {
+        frequencyInput = Math.abs(note.frequency) - Math.abs(freq) * -1;
+        percent =Math.abs(freq) / Math.abs(note.frequency)
+      } else {
+        frequencyInput = Math.abs(note.frequency) - Math.abs(freq);
+        percent = Math.abs(freq) / Math.abs(note.frequency)
+      }
+    }
+  }
+  return percent;
+};
 
 const init = () => {
   let source;
@@ -251,7 +264,7 @@ const init = () => {
         return;
       }
       if (typeof valueToDisplay == "number") {
-        valueToDisplay = `${closestNote(valueToDisplay)}\n${valueToDisplay.toFixed(2)}\n`;
+        valueToDisplay = `${closestNote(valueToDisplay)}\n${valueToDisplay.toFixed(2)}\n${percentToClosestNote(valueToDisplay).toFixed(2)}%`;
       }
 
       document.getElementById("note").innerText = valueToDisplay;
