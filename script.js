@@ -167,7 +167,7 @@ const init = () => {
         // Connect the source node to the analyzer
         source.connect(analyser);
 
-        // Draw Frequency or Sine Wave on screen
+        // Draw Frequency on screen
         visualize();
       })
       // Throw error if microphone is blocked from app
