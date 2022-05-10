@@ -1,4 +1,4 @@
-export const notesFrequency = [
+export default notesFrequency = [
   { note: "C0", frequency: 16.35 },
   { note: "C0#", frequency: 17.32 },
   { note: "D0", frequency: 18.35 },
